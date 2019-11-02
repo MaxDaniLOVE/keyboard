@@ -1,3 +1,7 @@
+
+ 
+
+
 let createKeyboard = function create() {
     let body = document.querySelector('body')
 
@@ -39,8 +43,8 @@ let createKeyboard = function create() {
                 <button class="keyboard-btn">delete</button>
             </div>
             <div class="keyboard-str">
-                <span class="keyboard-btn">
-                    <input type="radio" name="caps" id="caps"> CapsLock
+                <span class="keyboard-btn caps">
+                    <input type="checkbox" name="caps" id="caps"> CapsLock
                 </span>
                 <button class="keyboard-btn">ф</button>
                 <button class="keyboard-btn">ы</button>
@@ -119,8 +123,6 @@ let pressBtn = function pressEvent() {
         }
     }
     
-    //console.log(input);
-    
     document.addEventListener('keydown', () => {
         for(i = 0; i < btnsArray.length; i++)
         for(j = 0; j < btnsArray[i].length; j++){
@@ -129,9 +131,16 @@ let pressBtn = function pressEvent() {
                (allBtns[i][j]).classList.remove('keyup');
             }
         }
-        input.value += event.key; 
-        //console.log(event.keyCode);
-        //console.log(event.key);
+        if (event.keyCode === 9 || event.keyCode === 20 || event.keyCode === 16 || event.keyCode === 17 || event.keyCode === 18 || event.keyCode === 8 || event.keyCode === 46 || event.keyCode === 13) {
+            
+            console.log(event);
+            
+            // ! ADD FUNCTION HERE
+            
+            
+        } else {
+            input.value += event.key; 
+        }
     })
     document.addEventListener('keyup', () => {
         for(i = 0; i < btnsArray.length; i++)
@@ -161,6 +170,26 @@ let pressBtnByMouse = function pressEventMouse() {
         
     });
 }
+let capsEvent = function caps() {
+    let checkBox = document.querySelector('#caps');
+    let checkBoxBtn = document.querySelector('.caps')
+    console.log(checkBoxBtn);
+    checkBoxBtn.addEventListener('mousedown', () => {
+        
+        if (checkBox.checked === true) {
+            checkBox.checked = false
+            checkBoxBtn.classList.remove('pressed');
+            checkBoxBtn.classList.add('keyup');
+        } else {
+            checkBox.checked = true
+            checkBoxBtn.classList.add('pressed');
+            checkBoxBtn.classList.remove('keyup');
+        }
+        
+    })
+    
+}
 createKeyboard();
 pressBtn();
 pressBtnByMouse();
+capsEvent();
