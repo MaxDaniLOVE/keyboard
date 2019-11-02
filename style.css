@@ -1,0 +1,42 @@
+.main-wrapper{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+#input{
+    width: 50vw;
+    height: 20vw;
+    font-family: 'system-ui';
+    font-size: 20px;
+}
+.keyboard-wrapper{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.keyboard-str{
+    display: flex;
+    align-content: stretch;
+}
+.keyboard-btn{
+    background-color: #6e6e6e;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    font-family: 'system-ui';
+    padding: 5px 15px;
+    flex-grow: 1;
+    margin: 5px;
+    
+}
+.pressed{
+    outline: none;
+    background-color: #318364;
+    border-radius: 15px;
+    transition: border-radius 0.1s linear;
+}
+.keyup{
+    outline: none;
+    border-radius: 0;
+    transition: border-radius 0.1s linear;
+}
