@@ -1,1 +1,4 @@
 # keyboard
+```
+npm install
+```

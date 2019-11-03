@@ -98,9 +98,9 @@ let pressBtn = function pressEvent() {
     let input = document.querySelector('#input')
     let keyboard = document.querySelector('.keyboard-wrapper')
 
-    for(k = 0; k < keyboard.childNodes.length; k++){
+    for( let k = 0; k < keyboard.childNodes.length; k++){
         if (k % 2 === 1) {
-            for(l = 0; l < keyboard.childNodes[k].childNodes.length; l++)
+            for(let l = 0; l < keyboard.childNodes[k].childNodes.length; l++)
             if (l % 2 === 1) {
                 switch (k) {
                     case 1:
@@ -124,8 +124,8 @@ let pressBtn = function pressEvent() {
     }
     
     document.addEventListener('keydown', () => {
-        for(i = 0; i < btnsArray.length; i++)
-        for(j = 0; j < btnsArray[i].length; j++){
+        for(let i = 0; i < btnsArray.length; i++)
+        for(let j = 0; j < btnsArray[i].length; j++){
             if (event.keyCode === btnsArray[i][j]) {
                (allBtns[i][j]).classList.add('pressed');
                (allBtns[i][j]).classList.remove('keyup');
@@ -143,8 +143,8 @@ let pressBtn = function pressEvent() {
         }
     })
     document.addEventListener('keyup', () => {
-        for(i = 0; i < btnsArray.length; i++)
-        for(j = 0; j < btnsArray[i].length; j++){
+        for(let i = 0; i < btnsArray.length; i++)
+        for(let j = 0; j < btnsArray[i].length; j++){
             if (event.keyCode === btnsArray[i][j]) {
                (allBtns[i][j]).classList.remove('pressed');
                (allBtns[i][j]).classList.add('keyup');
