@@ -1,5 +1,35 @@
+let library = {
+    shiftUnpressedEng: [
+      ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace'],
+      ['tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\'],
+      ['CapsLock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', 'Enter'],
+      ['Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'Up'],
+      ['Ctrl', 'Alt', 'Space', 'Left', 'Down', 'Right']
+    ],
+    shiftPressedEng: [
+      ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', 'backspace'],
+      ['tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '{', '}', '|'],
+      ['CapsLock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ':', '"', 'Enter'],
+      ['Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '<', '>', '?', 'Up'],
+      ['Ctrl', 'Alt', 'Space', 'Left', 'Down', 'Right']
+    ],
+    shiftUnpressedRus: [
+        ['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'backspace'],
+        ['tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\'],
+        ['CapsLock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'Enter'],
+        ['Shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', 'Up'],
+        ['Ctrl', 'Alt', 'Space', 'Left', 'Down', 'Right']
+    ],
+    shiftPressedRus: [
+        ['Ё', '!', '"', '№', ';', '%', ':', '?', '*', '(', ')', '_', '+', 'backspace'],
+        ['tab', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', '\\'],
+        ['CapsLock', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'Enter'],
+        ['Shift', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', ',', 'Up'],
+        ['Ctrl', 'Alt', 'Space', 'Left', 'Down', 'Right']
+    ]
+  }
 
- 
+
 
 
 let createKeyboard = function create() {
@@ -10,76 +40,75 @@ let createKeyboard = function create() {
         <textarea name="input" id="input" cols="90" rows="20"></textarea>
         <div class="keyboard-wrapper">
             <div class="keyboard-str">
-                <button class="keyboard-btn">ё</button>
-                <button class="keyboard-btn">1</button>
-                <button class="keyboard-btn">2</button>
-                <button class="keyboard-btn">3</button>
-                <button class="keyboard-btn">4</button>
-                <button class="keyboard-btn">5</button>
-                <button class="keyboard-btn">6</button>
-                <button class="keyboard-btn">7</button>
-                <button class="keyboard-btn">8</button>
-                <button class="keyboard-btn">9</button>
-                <button class="keyboard-btn">0</button>
-                <button class="keyboard-btn">-</button>
-                <button class="keyboard-btn">=</button>
-                <button class="keyboard-btn">backspace</button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
             </div>
             <div class="keyboard-str">
-                <button class="keyboard-btn">Tab</button>
-                <button class="keyboard-btn">й</button>
-                <button class="keyboard-btn">ц</button>
-                <button class="keyboard-btn">у</button>
-                <button class="keyboard-btn">к</button>
-                <button class="keyboard-btn">е</button>
-                <button class="keyboard-btn">н</button>
-                <button class="keyboard-btn">г</button>
-                <button class="keyboard-btn">ш</button>
-                <button class="keyboard-btn">щ</button>
-                <button class="keyboard-btn">з</button>
-                <button class="keyboard-btn">х</button>
-                <button class="keyboard-btn">ъ</button>
-                <button class="keyboard-btn"> &#92 </button>
-                <button class="keyboard-btn">delete</button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
             </div>
             <div class="keyboard-str">
                 <span class="keyboard-btn caps">
-                    <input type="checkbox" name="caps" id="caps"> CapsLock
+                    <input type="checkbox" name="caps" id="caps"> //CapsLock
                 </span>
-                <button class="keyboard-btn">ф</button>
-                <button class="keyboard-btn">ы</button>
-                <button class="keyboard-btn">в</button>
-                <button class="keyboard-btn">а</button>
-                <button class="keyboard-btn">п</button>
-                <button class="keyboard-btn">р</button>
-                <button class="keyboard-btn">о</button>
-                <button class="keyboard-btn">л</button>
-                <button class="keyboard-btn">д</button>
-                <button class="keyboard-btn">ж</button>
-                <button class="keyboard-btn">э</button>
-                <button class="keyboard-btn">enter</button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
             </div>
             <div class="keyboard-str">
-                <button class="keyboard-btn">shift</button>
-                <button class="keyboard-btn">я</button>
-                <button class="keyboard-btn">ч</button>
-                <button class="keyboard-btn">с</button>
-                <button class="keyboard-btn">м</button>
-                <button class="keyboard-btn">и</button>
-                <button class="keyboard-btn">т</button>
-                <button class="keyboard-btn">ь</button>
-                <button class="keyboard-btn">б</button>
-                <button class="keyboard-btn">ю</button>
-                <button class="keyboard-btn">.</button>
-                <button class="keyboard-btn">up</button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
             </div>
             <div class="keyboard-str">
-                <button class="keyboard-btn">Ctrl</button>
-                <button class="keyboard-btn">Alt</button>
-                <button class="keyboard-btn space">Space</button>
-                <button class="keyboard-btn">Left</button>
-                <button class="keyboard-btn">Down</button>
-                <button class="keyboard-btn">Right</button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn space"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
+                <button class="keyboard-btn"></button>
             </div>
         </div>
     </div>
@@ -89,7 +118,7 @@ let createKeyboard = function create() {
 let pressBtn = function pressEvent() {
     let btnsArray = [
         [192, 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 189, 187, 8],
-        [9, 81, 87, 69, 82, 84, 89, 85, 73, 79, 80, 219, 221, 220, 46],
+        [9, 81, 87, 69, 82, 84, 89, 85, 73, 79, 80, 219, 221, 220],
         [20, 65, 83, 68, 70, 71, 72, 74, 75, 76, 186, 222, 13],
         [16, 90, 88, 67, 86, 66, 78, 77, 188, 190, 191, 38],
         [17, 18, 32, 37, 40, 39]]
@@ -122,7 +151,30 @@ let pressBtn = function pressEvent() {
             } 
         }
     }
-    
+    // -------------------- 
+    for(let k = 0; k < allBtns.length; k++)
+    for(let l = 0; l < allBtns[k].length; l++){
+        allBtns[k][l].innerText = library.shiftUnpressedRus[k][l]
+    }
+
+    document.addEventListener('keydown', () => {
+        if (event.which ===  16) {
+            for(let k = 0; k < allBtns.length; k++)
+            for(let l = 0; l < allBtns[k].length; l++){
+                allBtns[k][l].innerText = library.shiftPressedRus[k][l]
+            }
+        }
+    })
+    document.addEventListener('keyup', () => {
+        if (event.which ===  16) {
+            for(let k = 0; k < allBtns.length; k++)
+            for(let l = 0; l < allBtns[k].length; l++){
+                allBtns[k][l].innerText = library.shiftUnpressedRus[k][l]
+            }
+        }
+    })
+    //---------------------------
+
     document.addEventListener('keydown', () => {
         for(let i = 0; i < btnsArray.length; i++)
         for(let j = 0; j < btnsArray[i].length; j++){
@@ -131,16 +183,8 @@ let pressBtn = function pressEvent() {
                (allBtns[i][j]).classList.remove('keyup');
             }
         }
-        if (event.keyCode === 9 || event.keyCode === 20 || event.keyCode === 16 || event.keyCode === 17 || event.keyCode === 18 || event.keyCode === 8 || event.keyCode === 46 || event.keyCode === 13) {
-            
-            console.log(event);
-            
-            // ! ADD FUNCTION HERE
-            
-            
-        } else {
-            input.value += event.key; 
-        }
+        input.value += event.key; 
+        
     })
     document.addEventListener('keyup', () => {
         for(let i = 0; i < btnsArray.length; i++)
@@ -186,6 +230,21 @@ let capsEvent = function caps() {
             checkBoxBtn.classList.remove('keyup');
         }
         
+    })
+    checkBoxBtn.addEventListener('keydown', () => {
+        if (event.keyCode !== 20) {
+            console.log('true');
+            
+            if (checkBox.checked === true) {
+                checkBox.checked = false
+                checkBoxBtn.classList.remove('pressed');
+                checkBoxBtn.classList.add('keyup');
+            } else {
+                checkBox.checked = true
+                checkBoxBtn.classList.add('pressed');
+                checkBoxBtn.classList.remove('keyup');
+            } 
+        } 
     })
     
 }
