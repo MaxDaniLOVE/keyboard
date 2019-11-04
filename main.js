@@ -221,15 +221,48 @@ const Keyboard = class {
         let buttons = document.querySelectorAll('.keyboard-btn')
         buttons.forEach(btn => {
             btn.addEventListener('mousedown', () => {
-                this.input.value += btn.innerHTML;
                 btn.classList.add('pressed');
                 btn.classList.remove('keyup');
+                switch (btn.innerHTML) {
+                    case 'Tab':
+                        this.input.value += '\t';
+                    break;
+                    case 'Backspace':
+                            this.backspace()
+                        break;
+                    case 'CapsLock':
+                            console.log('capsPressed');
+                        break; 
+                    case 'Enter':
+                            this.input.value += '\n'
+                        break;       
+                    case 'Shift':
+                            this.shifted(this.shiftPressedRus)
+                        break;
+                    case 'Ctrl':
+                            console.log('ctrl');
+                        break;
+                    case 'Alt':
+                            console.log('alt');
+                        break;
+                    case 'Space':
+                        this.input.value += ' ';
+                        break;
+                    default:
+                        this.input.value += btn.innerHTML;
+                        break;
+                }
             })
             btn.addEventListener('mouseup', () => {
                 btn.classList.remove('pressed');
                 btn.classList.add('keyup');
+                switch (btn.innerHTML) {
+                    case 'Shift':
+                        console.log('caps');
+                        this.shifted(this.shiftUnpressedRus)
+                        break;
+                }
             })
-            
         });
     }
     backspace(){
