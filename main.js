@@ -4,29 +4,29 @@ const Keyboard = class {
             ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'],
             ['Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\'],
             ['CapsLock', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', 'Enter'],
-            ['Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', 'Up'],
-            ['Ctrl', 'Alt', 'Space', 'Left', 'Down', 'Right']
+            ['Shift', 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/', '↑'],
+            ['Ctrl', 'Alt', 'Space', '←', '↓', '→']
           ],
           this.shiftPressedEng = [
             ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+', 'Backspace'],
             ['Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '{', '}', '|'],
             ['CapsLock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ':', '"', 'Enter'],
-            ['Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '<', '>', '?', 'Up'],
-            ['Ctrl', 'Alt', 'Space', 'Left', 'Down', 'Right']
+            ['Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '<', '>', '?', '↑'],
+            ['Ctrl', 'Alt', 'Space', '←', '↓', '→']
           ],
           this.shiftUnpressedRus = [
               ['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'],
               ['Tab', 'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\'],
               ['CapsLock', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'Enter'],
-              ['Shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', 'Up'],
-              ['Ctrl', 'Alt', 'Space', 'Left', 'Down', 'Right']
+              ['Shift', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.', '↑'],
+              ['Ctrl', 'Alt', 'Space', '←', '↓', '→']
           ],
           this.shiftPressedRus = [
               ['Ё', '!', '"', '№', ';', '%', ':', '?', '*', '(', ')', '_', '+', 'Backspace'],
               ['Tab', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', '\\'],
               ['CapsLock', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', 'Enter'],
-              ['Shift', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', ',', 'Up'],
-              ['Ctrl', 'Alt', 'Space', 'Left', 'Down', 'Right']
+              ['Shift', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', ',', '↑'],
+              ['Ctrl', 'Alt', 'Space', '←', '↓', '→']
           ],
           this.body = document.querySelector('body'),
           this.btnsArray = [
@@ -152,40 +152,69 @@ const Keyboard = class {
         }
     
         document.addEventListener('keydown', () => {
-            if (event.shiftKey) {
-                for(let k = 0; k < this.allBtns.length; k++)
-                for(let l = 0; l < this.allBtns[k].length; l++){
+            for(let k = 0; k < this.allBtns.length; k++)
+            for(let l = 0; l < this.allBtns[k].length; l++){
+                if (event.shiftKey) {
                     this.allBtns[k][l].innerText = this.shiftPressedRus[k][l]
                 }
-            } 
+                if (event.keyCode === this.btnsArray[k][l]) {
+                    (this.allBtns[k][l]).classList.add('pressed');
+                    (this.allBtns[k][l]).classList.remove('keyup');
+                }
+            }
+            switch (event.keyCode) {
+                case 9:
+                        this.input.value += '\t';
+                    break;
+                case 8:
+                        this.backspace()
+                    break;
+                case 20:
+                        console.log('caps');
+                    break; 
+                case 13:
+                        this.input.value += '\n'
+                    break;       
+                case 16:
+                        console.log('shift');
+                    break;
+                case 17:
+                        console.log('ctrl');
+                    break;
+                case 18:
+                        console.log('alt');
+                    break;
+                case 38:
+                    this.input.value += '↑';
+                    break;
+                case 37:
+                    this.input.value += '←';
+                    break;
+                case 40:
+                    this.input.value += '↓';
+                    break;
+                case 39:
+                    this.input.value += '→';
+                    break;
+                default:
+                    this.input.value += event.key;
+                    break;
+            }
+            
+             
         })
         document.addEventListener('keyup', () => {
-            if (!event.shiftKey) {
-                for(let k = 0; k < this.allBtns.length; k++)
-                for(let l = 0; l < this.allBtns[k].length; l++){
+            for(let k = 0; k < this.allBtns.length; k++)
+            for(let l = 0; l < this.allBtns[k].length; l++){
+                if (!event.shiftKey) {
                     this.allBtns[k][l].innerText = this.shiftUnpressedRus[k][l]
-                }
+                }   
+                if (event.keyCode === this.btnsArray[k][l]) {
+                    (this.allBtns[k][l]).classList.remove('pressed');
+                    (this.allBtns[k][l]).classList.add('keyup');
+                } 
             }
         })
-        document.addEventListener('keydown', () => {
-            for(let i = 0; i < this.btnsArray.length; i++)
-            for(let j = 0; j < this.btnsArray[i].length; j++){
-                if (event.keyCode === this.btnsArray[i][j]) {
-                   (this.allBtns[i][j]).classList.add('pressed');
-                   (this.allBtns[i][j]).classList.remove('keyup');
-                }
-            }
-            this.input.value += event.key; 
-        })
-        document.addEventListener('keyup', () => {
-            for(let i = 0; i < this.btnsArray.length; i++)
-            for(let j = 0; j < this.btnsArray[i].length; j++){
-                if (event.keyCode === this.btnsArray[i][j]) {
-                   (this.allBtns[i][j]).classList.remove('pressed');
-                   (this.allBtns[i][j]).classList.add('keyup');
-                }
-            }
-        }) 
     }
     pressEventMouse() {
         let buttons = document.querySelectorAll('.keyboard-btn')
@@ -236,6 +265,9 @@ const Keyboard = class {
         })
         
     }*/
+    backspace(){
+        this.input.value = this.input.value.slice(0, -1);
+    }
 }
 const keyboard = new Keyboard();
 keyboard.create()
