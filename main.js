@@ -76,9 +76,7 @@ const Keyboard = class {
                     <button class="keyboard-btn"></button>
                 </div>
                 <div class="keyboard-str">
-                    <span class="keyboard-btn caps">
-                        <input type="checkbox" name="caps" id="caps"> //CapsLock
-                    </span>
+                    <button class="keyboard-btn caps"></button>
                     <button class="keyboard-btn"></button>
                     <button class="keyboard-btn"></button>
                     <button class="keyboard-btn"></button>
@@ -213,6 +211,12 @@ const Keyboard = class {
                     (this.allBtns[k][l]).classList.remove('pressed');
                     (this.allBtns[k][l]).classList.add('keyup');
                 } 
+                if (event.getModifierState("CapsLock")) {
+                    document.querySelector('.caps').classList.add('pressed');
+                } else {
+                  document.querySelector('.caps').classList.add('keyup');
+                }
+                
             }
         })
     }
@@ -231,40 +235,6 @@ const Keyboard = class {
             
         });
     }
-    /*caps() {
-        let checkBox = document.querySelector('#caps');
-        let checkBoxBtn = document.querySelector('.caps')
-        console.log(checkBoxBtn);
-        checkBoxBtn.addEventListener('mousedown', () => {
-            
-            if (checkBox.checked === true) {
-                checkBox.checked = false
-                checkBoxBtn.classList.remove('pressed');
-                checkBoxBtn.classList.add('keyup');
-            } else {
-                checkBox.checked = true
-                checkBoxBtn.classList.add('pressed');
-                checkBoxBtn.classList.remove('keyup');
-            }
-            
-        })
-        checkBoxBtn.addEventListener('keydown', () => {
-            if (event.keyCode !== 20) {
-                console.log('true');
-                
-                if (checkBox.checked === true) {
-                    checkBox.checked = false
-                    checkBoxBtn.classList.remove('pressed');
-                    checkBoxBtn.classList.add('keyup');
-                } else {
-                    checkBox.checked = true
-                    checkBoxBtn.classList.add('pressed');
-                    checkBoxBtn.classList.remove('keyup');
-                } 
-            } 
-        })
-        
-    }*/
     backspace(){
         this.input.value = this.input.value.slice(0, -1);
     }
@@ -273,4 +243,3 @@ const keyboard = new Keyboard();
 keyboard.create()
 keyboard.pressEvent()
 keyboard.pressEventMouse() 
-//keyboard.caps()
