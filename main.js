@@ -124,8 +124,6 @@ const Keyboard = class {
     pressEvent(){           
         this.input = document.querySelector('#input')
         let keyboard = document.querySelector('.keyboard-wrapper')
-        console.log(this.activeLanguage);
-        
         for(let k = 0; k < keyboard.childNodes.length; k++){
             if (k % 2 === 1) {
                 for(let l = 0; l < keyboard.childNodes[k].childNodes.length; l++)
