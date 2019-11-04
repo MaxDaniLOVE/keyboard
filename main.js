@@ -40,6 +40,7 @@ const Keyboard = class {
           [16, 90, 88, 67, 86, 66, 78, 77, 188, 190, 38, 191],
           [17, 18, 32, 37, 40, 39]],
         this.allBtns = [[],[],[],[],[]]
+        this.activeLanguage = this.eng
     }
     create() {
         this.body = document.querySelector('body')
@@ -123,7 +124,8 @@ const Keyboard = class {
     pressEvent(){           
         this.input = document.querySelector('#input')
         let keyboard = document.querySelector('.keyboard-wrapper')
-    
+        console.log(this.activeLanguage);
+        
         for(let k = 0; k < keyboard.childNodes.length; k++){
             if (k % 2 === 1) {
                 for(let l = 0; l < keyboard.childNodes[k].childNodes.length; l++)
@@ -150,7 +152,7 @@ const Keyboard = class {
         }
         for(let k = 0; k < this.allBtns.length; k++)
         for(let l = 0; l < this.allBtns[k].length; l++){
-            this.allBtns[k][l].innerText = this.rus.shiftUnpressed[k][l]
+            this.allBtns[k][l].innerText = this.activeLanguage.shiftUnpressed[k][l]
         }
     
         document.addEventListener('keydown', () => {
@@ -175,7 +177,7 @@ const Keyboard = class {
                         this.input.value += '\n'
                     break;       
                 case 16:
-                        this.shifted(this.rus.shiftPressed)
+                        this.shifted(this.activeLanguage.shiftPressed)
                     break;
                 case 17:
                         console.log('ctrl');
@@ -199,8 +201,6 @@ const Keyboard = class {
                     this.input.value += event.key;
                     break;
             }
-            
-             
         })
         document.addEventListener('keyup', () => {
             for(let k = 0; k < this.allBtns.length; k++)
@@ -211,11 +211,11 @@ const Keyboard = class {
                 } 
             }
             if (!event.shiftKey) {
-                this.unshifted(this.rus.shiftUnpressed)
+                this.unshifted(this.activeLanguage.shiftUnpressed)
             }
             if (event.getModifierState("CapsLock")) {
                 document.querySelector('.caps').classList.add('pressed');
-                this.shifted(this.rus.shiftPressed)
+                this.shifted(this.activeLanguage.shiftPressed)
             } else {
                 document.querySelector('.caps').classList.add('keyup');
             }
@@ -241,7 +241,7 @@ const Keyboard = class {
                             this.input.value += '\n'
                         break;       
                     case 'Shift':
-                            this.shifted(this.rus.shiftPressed)
+                            this.shifted(this.activeLanguage.shiftPressed)
                         break;
                     case 'Ctrl':
                             console.log('ctrl');
@@ -263,7 +263,7 @@ const Keyboard = class {
                 switch (btn.innerHTML) {
                     case 'Shift':
                         console.log('caps');
-                        this.shifted(this.rus.shiftUnpressed)
+                        this.shifted(this.activeLanguage.shiftUnpressed)
                         break;
                 }
             })
@@ -284,8 +284,22 @@ const Keyboard = class {
             this.allBtns[k][l].innerText = lowercaseLanguage[k][l]
         }
     }
+    changeLanguage(){
+        document.addEventListener('keydown', () => {
+            if (event.shiftKey  &&  event.altKey) {
+                if(this.activeLanguage === this.eng){
+                    this.activeLanguage = this.rus
+                    console.log('s+a');
+                } else {
+                    this.activeLanguage = this.eng
+                }
+            }
+        })
+        
+    }
 }
 const keyboard = new Keyboard();
 keyboard.create()
 keyboard.pressEvent()
 keyboard.pressEventMouse() 
+keyboard.changeLanguage()
