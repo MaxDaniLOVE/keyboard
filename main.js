@@ -213,8 +213,10 @@ const Keyboard = class {
                 } 
                 if (event.getModifierState("CapsLock")) {
                     document.querySelector('.caps').classList.add('pressed');
+                    this.shifted()
                 } else {
                   document.querySelector('.caps').classList.add('keyup');
+                  this.unshifted()
                 }
                 
             }
@@ -237,6 +239,18 @@ const Keyboard = class {
     }
     backspace(){
         this.input.value = this.input.value.slice(0, -1);
+    }
+    shifted(){
+        for(let k = 0; k < this.allBtns.length; k++)
+        for(let l = 0; l < this.allBtns[k].length; l++){
+            this.allBtns[k][l].innerText = this.shiftPressedRus[k][l]
+        }
+    }
+    unshifted(){
+        for(let k = 0; k < this.allBtns.length; k++)
+        for(let l = 0; l < this.allBtns[k].length; l++){
+            this.allBtns[k][l].innerText = this.shiftUnpressedRus[k][l]
+        }
     }
 }
 const keyboard = new Keyboard();
