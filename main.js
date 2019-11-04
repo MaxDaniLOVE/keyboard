@@ -152,9 +152,6 @@ const Keyboard = class {
         document.addEventListener('keydown', () => {
             for(let k = 0; k < this.allBtns.length; k++)
             for(let l = 0; l < this.allBtns[k].length; l++){
-                if (event.shiftKey) {
-                    this.allBtns[k][l].innerText = this.shiftPressedRus[k][l]
-                }
                 if (event.keyCode === this.btnsArray[k][l]) {
                     (this.allBtns[k][l]).classList.add('pressed');
                     (this.allBtns[k][l]).classList.remove('keyup');
@@ -174,7 +171,7 @@ const Keyboard = class {
                         this.input.value += '\n'
                     break;       
                 case 16:
-                        console.log('shift');
+                        this.shifted(this.shiftPressedRus)
                     break;
                 case 17:
                         console.log('ctrl');
@@ -203,22 +200,20 @@ const Keyboard = class {
         })
         document.addEventListener('keyup', () => {
             for(let k = 0; k < this.allBtns.length; k++)
-            for(let l = 0; l < this.allBtns[k].length; l++){
-                if (!event.shiftKey) {
-                    this.allBtns[k][l].innerText = this.shiftUnpressedRus[k][l]
-                }   
+            for(let l = 0; l < this.allBtns[k].length; l++){ 
                 if (event.keyCode === this.btnsArray[k][l]) {
                     (this.allBtns[k][l]).classList.remove('pressed');
                     (this.allBtns[k][l]).classList.add('keyup');
                 } 
-                if (event.getModifierState("CapsLock")) {
-                    document.querySelector('.caps').classList.add('pressed');
-                    this.shifted()
-                } else {
-                  document.querySelector('.caps').classList.add('keyup');
-                  this.unshifted()
-                }
-                
+            }
+            if (!event.shiftKey) {
+                this.unshifted(this.shiftUnpressedRus)
+            }
+            if (event.getModifierState("CapsLock")) {
+                document.querySelector('.caps').classList.add('pressed');
+                this.shifted(this.shiftPressedRus)
+            } else {
+                document.querySelector('.caps').classList.add('keyup');
             }
         })
     }
@@ -240,16 +235,16 @@ const Keyboard = class {
     backspace(){
         this.input.value = this.input.value.slice(0, -1);
     }
-    shifted(){
+    shifted(uppercaseLanguage){
         for(let k = 0; k < this.allBtns.length; k++)
         for(let l = 0; l < this.allBtns[k].length; l++){
-            this.allBtns[k][l].innerText = this.shiftPressedRus[k][l]
+            this.allBtns[k][l].innerText = uppercaseLanguage[k][l]
         }
     }
-    unshifted(){
+    unshifted(lowercaseLanguage){
         for(let k = 0; k < this.allBtns.length; k++)
         for(let l = 0; l < this.allBtns[k].length; l++){
-            this.allBtns[k][l].innerText = this.shiftUnpressedRus[k][l]
+            this.allBtns[k][l].innerText = lowercaseLanguage[k][l]
         }
     }
 }
