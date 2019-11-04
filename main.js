@@ -41,7 +41,7 @@ const Keyboard = class {
         this.body = document.querySelector('body')
         this.body.insertAdjacentHTML('afterbegin', `
         <div class="main-wrapper">
-            <textarea name="input" id="input" cols="90" rows="20"></textarea>
+            <textarea name="input" id="input" cols="90" rows="20" readonly></textarea>
             <div class="keyboard-wrapper">
                 <div class="keyboard-str">
                     <button class="keyboard-btn"></button>
