@@ -156,38 +156,38 @@ const Keyboard = class {
     
         document.addEventListener('keydown', () => {
             this.arrEnumeration('pressed', 'keyup')
-            switch (event.keyCode) {
-                case 9:
-                        this.input.value += '\t';
+            switch (event.key) {
+                case 'Tab':
+                    this.input.value += '\t';
                     break;
-                case 8:
-                        this.backspace()
+                case 'Backspace':
+                    this.backspace()
                     break;
-                case 20:
-                        console.log('caps');
+                case 'CapsLock':
+                    console.log('caps');
                     break; 
-                case 13:
-                        this.input.value += '\n'
+                case 'Enter':
+                    this.input.value += '\n'
                     break;       
-                case 16:
-                        this.shifted(this.activeLanguage.shiftPressed)
+                case 'Shift':
+                    this.shifted(this.activeLanguage.shiftPressed)
                     break;
-                case 17:
-                        console.log('ctrl');
+                case 'Control':
+                    console.log('ctrl');
                     break;
-                case 18:
-                        console.log('alt');
+                case 'Alt':
+                    console.log('alt');
                     break;
-                case 38:
+                case 'ArrowUp':
                     this.input.value += '↑';
                     break;
-                case 37:
+                case 'ArrowLeft':
                     this.input.value += '←';
                     break;
-                case 40:
+                case 'ArrowDown':
                     this.input.value += '↓';
                     break;
-                case 39:
+                case 'ArrowRight':
                     this.input.value += '→';
                     break;
                 default:
