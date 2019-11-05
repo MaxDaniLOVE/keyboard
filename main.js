@@ -253,9 +253,6 @@ const Keyboard = class {
                     case 'CapsLock':
                         this.capsLockPressed()
                         break;
-                    default:
-                        
-                        break;
                 }
             })
         });
