@@ -155,13 +155,7 @@ const Keyboard = class {
         }
     
         document.addEventListener('keydown', () => {
-            for(let k = 0; k < this.allBtns.length; k++)
-            for(let l = 0; l < this.allBtns[k].length; l++){
-                if (event.keyCode === this.btnsArray[k][l]) {
-                    (this.allBtns[k][l]).classList.add('pressed');
-                    (this.allBtns[k][l]).classList.remove('keyup');
-                }
-            }
+            this.arrEnumeration('pressed', 'keyup')
             switch (event.keyCode) {
                 case 9:
                         this.input.value += '\t';
@@ -202,13 +196,7 @@ const Keyboard = class {
             }
         })
         document.addEventListener('keyup', () => {
-            for(let k = 0; k < this.allBtns.length; k++)
-            for(let l = 0; l < this.allBtns[k].length; l++){ 
-                if (event.keyCode === this.btnsArray[k][l]) {
-                    (this.allBtns[k][l]).classList.remove('pressed');
-                    (this.allBtns[k][l]).classList.add('keyup');
-                } 
-            }
+            this.arrEnumeration('keyup', 'pressed')
             switch (event.keyCode) {
                 case 16:
                     this.unshifted(this.activeLanguage.shiftUnpressed)
@@ -311,6 +299,15 @@ const Keyboard = class {
                 }
             }
         })
+    }
+    arrEnumeration(addedClass, removedClass){
+        for(let k = 0; k < this.allBtns.length; k++)
+        for(let l = 0; l < this.allBtns[k].length; l++){
+            if (event.keyCode === this.btnsArray[k][l]) {
+                (this.allBtns[k][l]).classList.add(addedClass);
+                (this.allBtns[k][l]).classList.remove(removedClass);
+            }
+        }
     }
 }
 const keyboard = new Keyboard();
