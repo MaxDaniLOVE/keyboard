@@ -33,7 +33,7 @@ const Keyboard = class {
             ],
         }
         this.body = document.querySelector('body'),
-        this.btnsArray = [
+        this.btnsKeyCodeArray = [
           [192, 49, 50, 51, 52, 53, 54, 55, 56, 57, 48, 189, 187, 8],
           [9, 81, 87, 69, 82, 84, 89, 85, 73, 79, 80, 219, 221, 220],
           [20, 65, 83, 68, 70, 71, 72, 74, 75, 76, 186, 222, 13],
@@ -299,7 +299,7 @@ const Keyboard = class {
     arrEnumeration(addedClass, removedClass){
         for(let k = 0; k < this.allBtns.length; k++)
         for(let l = 0; l < this.allBtns[k].length; l++){
-            if (event.keyCode === this.btnsArray[k][l]) {
+            if (event.keyCode === this.btnsKeyCodeArray[k][l]) {
                 (this.allBtns[k][l]).classList.add(addedClass);
                 (this.allBtns[k][l]).classList.remove(removedClass);
             }
