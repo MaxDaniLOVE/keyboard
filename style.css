@@ -9,6 +9,7 @@
     font-family: 'system-ui';
     font-size: 20px;
     border: 5px outset #6E7A90;
+    border-radius: 10px;
 }
 .keyboard-wrapper{
     margin-top: 20px;
