@@ -218,22 +218,22 @@ const Keyboard = class {
                         this.input.value += '\t';
                     break;
                     case 'Backspace':
-                            this.backspace()
+                        this.backspace()
                         break;
                     case 'CapsLock':
-                            console.log('capsPressed');
+                        console.log('capsPressed');
                         break; 
                     case 'Enter':
-                            this.input.value += '\n'
+                        this.input.value += '\n'
                         break;       
                     case 'Shift':
-                            this.shifted(this.activeLanguage.shiftPressed)
+                        this.shifted(this.activeLanguage.shiftPressed)
                         break;
                     case 'Ctrl':
-                            console.log('ctrl');
+                        console.log('ctrl');
                         break;
                     case 'Alt':
-                            console.log('alt');
+                        console.log('alt');
                         break;
                     case 'Space':
                         this.input.value += ' ';
@@ -290,7 +290,6 @@ const Keyboard = class {
             if (event.shiftKey  &&  event.altKey) {
                 if(this.activeLanguage === this.eng){
                     this.activeLanguage = this.rus
-                    console.log('s+a');
                 } else {
                     this.activeLanguage = this.eng
                 }
